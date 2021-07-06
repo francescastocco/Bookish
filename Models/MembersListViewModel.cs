@@ -7,7 +7,9 @@ namespace Bookish.Models
 {
     public class MembersListViewModel
     {
-        public int[] Id = { 1, 2, 3, 4 };
-        public string[] Name = { "ken", "francesca", "oskar", "luke"};
+        public List<int> Id { get; set; }
+        public List<string> Name { get; set;}
+
+        
     }
 }

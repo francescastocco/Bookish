@@ -11,8 +11,11 @@ namespace Bookish.Controllers
     {
         public IActionResult Index()
         {
+            var ids = new List<int>{1,2,3,4};
+            var names = new List<string>{ "ken", "francesca", "oskar", "luke" };
             var membersList = new MembersListViewModel();
-            //membersList.Name = "Ken";
+            membersList.Name = names;
+            membersList.Id = ids;
             return View(membersList);
         }
     }
