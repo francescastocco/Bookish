@@ -1,60 +1,25 @@
 ﻿@using System.Linq;
-@model MembersListViewModel;
+@model List<MemberViewModel>
 @{
     ViewData["Title"] = "Member";
 
-    Func<object, object> GenerateTableRow(MemberViewModel member) 
-    {
-        return @<tr>
-            <td>@member.Name</td>
-        </tr>
-    }
 }
 
-<h2>Index</h2>
+<h2>Members</h2>
 
 <p>Hello from our View Template!</p>
-<p>@Model.Name[0]</p>
-<p>@Model.Name[1]</p>
-<p>@Model.Name[2]</p>
-<p>@Model.Name[3]</p>
 
 <table style="width:100%">
     <tr>
         <th>ID</th>
         <th>Name</th>
     </tr>
-    @Model.List.Select(l => GenerateTableRow(member))
-    <tr>
-        <td>Jill</td>
-        <td>Smith</td>
-    </tr>
-    <tr>
-        <td>Eve</td>
-        <td>Jackson</td>
-    </tr>
+    @foreach (var member in Model)
+    {
+        <tr>
+            <td>@member.Id</td>
+            <td>@member.Name</td>
+        </tr>
+    }
+   
 </table>
-
-
-string[] fruits = { "apple", "banana", "mango", "orange",
-                      "passionfruit", "grape" };
-
-var query =
-    fruits.Select((fruit, index) =>
-                      new { index, str = fruit.Substring(0, index) });
-
-foreach (var obj in query)
-{
-    Console.WriteLine("{0}", obj);
-}
-
-/*
- This code produces the following output:
-
- {index=0, str=}
- {index=1, str=b}
- {index=2, str=ma}
- {index=3, str=ora}
- {index=4, str=pass}
- {index=5, str=grape}
-*/
