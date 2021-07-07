@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bookish.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20210707104541_CreateLibraryDB")]
-    partial class CreateLibraryDB
+    [Migration("20210707130935_nullableColumns3")]
+    partial class nullableColumns3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
