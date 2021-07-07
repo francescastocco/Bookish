@@ -16,7 +16,7 @@ namespace Bookish.Controllers
             var DbMembers = context.Members
                                               .Where(s => s.Name == "Hagrid")
                                               .ToList();
-
+            //use.include(livebooks)
             //var memberLiveBooks = DbMembers[0].LiveBooks;
             //foreach(var book in memberLiveBooks)
             //{
