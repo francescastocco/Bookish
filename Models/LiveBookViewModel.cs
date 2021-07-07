@@ -5,15 +5,21 @@ using System.Threading.Tasks;
 
 namespace Bookish.Models
 {
-    public class BookTypeViewModel
+    public class LiveBookViewModel
     {
         public int Id { get; set; }
-        public string Title { get; set; }
+        public int BookTypeId { get; set; }
+        public int MemberId { get; set; }
+        public DateTime CheckOutDate { get; set; }
+        public DateTime DueDate { get; set; }
 
-        public BookTypeViewModel(int id, string title)
+        public LiveBookViewModel(int id, int bookTypeId, int memberId, DateTime checkOutDate, DateTime dueDate)
         {
             Id = id;
-            Title = title;
+            BookTypeId = bookTypeId;
+            MemberId = memberId;
+            CheckOutDate = checkOutDate;
+            DueDate = dueDate;
         }
     }
 }

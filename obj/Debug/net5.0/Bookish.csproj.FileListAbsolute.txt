@@ -142,3 +142,4 @@ C:\Training\Databases\Bookish\obj\Debug\net5.0\Bookish.dll
 C:\Training\Databases\Bookish\obj\Debug\net5.0\ref\Bookish.dll
 C:\Training\Databases\Bookish\obj\Debug\net5.0\Bookish.pdb
 C:\Training\Databases\Bookish\obj\Debug\net5.0\Bookish.genruntimeconfig.cache
+C:\Training\Databases\Bookish\obj\Debug\net5.0\Bookish.csproj.AssemblyReference.cache

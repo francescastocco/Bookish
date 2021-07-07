@@ -9,11 +9,15 @@ namespace Bookish.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
+        public string Author { get; set; }
+        public string Isbn { get; set; }
 
-        public BookTypeViewModel(int id, string title)
+        public BookTypeViewModel(int id, string title, string author, string isbn)
         {
             Id = id;
             Title = title;
+            Author = author;
+            Isbn = isbn;
         }
     }
 }
