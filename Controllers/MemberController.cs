@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Bookish.DbModels;
 
 namespace Bookish.Controllers
 {
@@ -11,14 +12,25 @@ namespace Bookish.Controllers
     {
         public IActionResult Index()
         {
-            var ids = new List<int> { 1,2,3,4};
-            var names = new List<string> { "ken", "francesca", "oskar", "luke" };
-            var members = new List<MemberViewModel>();
-            for(var i=0; i<names.Count; i++)
+            var context = new LibraryContext();
+            var DbMembers = context.Members
+                                              .Where(s => s.Name == "Hagrid")
+                                              .ToList();
+
+            //var memberLiveBooks = DbMembers[0].LiveBooks;
+            //foreach(var book in memberLiveBooks)
+            //{
+            //    Console.WriteLine(book.Id);
+            //}
+
+            var viewMembers = new List<MemberViewModel>();
+            foreach (var DbMember in DbMembers)
             {
-                members.Add(new MemberViewModel(ids[i], names[i]));
+                var viewMember = new MemberViewModel(DbMember.Id, DbMember.Name);
+                viewMembers.Add(viewMember);
             }
-            return View(members);
+            
+            return View(viewMembers);
         }
     }
 }
