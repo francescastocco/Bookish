@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Bookish.DbModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace Bookish.Controllers
 {
@@ -15,10 +16,11 @@ namespace Bookish.Controllers
             var context = new LibraryContext();
             var DbMembers = context.Members
                                               .Where(s => s.Name == "Hagrid")
+                                              .Include(s => s.LiveBooks)
                                               .ToList();
-            //use.include(livebooks)
+            
             //var memberLiveBooks = DbMembers[0].LiveBooks;
-            //foreach(var book in memberLiveBooks)
+            //foreach (var book in memberLiveBooks)
             //{
             //    Console.WriteLine(book.Id);
             //}
