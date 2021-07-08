@@ -14,9 +14,9 @@ namespace Bookish.Controllers
     {
         private readonly IMemberService _service;
 
-        public MemberController(LibraryContext context)
+        public MemberController(IMemberService service)
         {
-            _service = new MemberService(context);
+            _service = service;
         }
 
         [HttpGet]
