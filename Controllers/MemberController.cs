@@ -6,33 +6,30 @@ using System.Linq;
 using System.Threading.Tasks;
 using Bookish.DbModels;
 using Microsoft.EntityFrameworkCore;
+using Bookish.Services;
 
 namespace Bookish.Controllers
 {
     public class MemberController : Controller
     {
+        private readonly IMemberService _service;
+
+        public MemberController(LibraryContext context)
+        {
+            _service = new MemberService(context);
+        }
+
+        [HttpGet]
         public IActionResult Index()
         {
-            var context = new LibraryContext();
-            var DbMembers = context.Members
-                                              .Where(s => s.Name == "Hagrid")
-                                              .Include(s => s.LiveBooks)
-                                              .ToList();
-            
-            //var memberLiveBooks = DbMembers[0].LiveBooks;
-            //foreach (var book in memberLiveBooks)
-            //{
-            //    Console.WriteLine(book.Id);
-            //}
+            return View(_service.GetAllMembers());
+        }
 
-            var viewMembers = new List<MemberViewModel>();
-            foreach (var DbMember in DbMembers)
-            {
-                var viewMember = new MemberViewModel(DbMember.Id, DbMember.Name);
-                viewMembers.Add(viewMember);
-            }
-            
-            return View(viewMembers);
+        [HttpPost]
+        public IActionResult Index(MemberListViewModel memberListViewModel)
+        {
+            _service.AddMember(memberListViewModel.NewMemberName);
+            return RedirectToAction("Index");
         }
     }
 }

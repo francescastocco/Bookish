@@ -1,5 +1,6 @@
 ﻿@using System.Linq;
-@model List<MemberViewModel>
+@using System.Web; 
+@model MemberListViewModel;
 @{
     ViewData["Title"] = "Member";
 
@@ -7,19 +8,25 @@
 
 <h2>Members</h2>
 
-<p>Hello from our View Template!</p>
+<p>List of Hogwarts library members - no access to forbidden section</p>
 
 <table style="width:100%">
     <tr>
         <th>ID</th>
         <th>Name</th>
     </tr>
-    @foreach (var member in Model)
+    @foreach (var member in Model.Members)
     {
         <tr>
             <td>@member.Id</td>
             <td>@member.Name</td>
         </tr>
     }
-   
+
 </table>
+
+<h2>Create Member</h2>
+<form method="post" asp-controller="Member" asp-action="Index">
+    First Name: <input type="text" asp-for="NewMemberName" value="" />
+    <button type="submit">Create New Member</button>
+</form>

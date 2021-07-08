@@ -8,18 +8,12 @@ namespace Bookish.DbModels
 {
     public class LibraryContext: DbContext
     {
+        public LibraryContext(DbContextOptions<LibraryContext> options) : base(options)
+        {
+
+        }
         public DbSet<MemberDbModel> Members { get; set; }
         public DbSet<BookTypeDbModel> BookTypes { get; set; }
         public DbSet<LiveBookDbModel> LiveBooks { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(@"Server=localhost,1433;Database=BookishDB;User Id=sa;Password=Password123;");
-        }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            //modelBuilder.Entity<SomeObject>().Property(m => m.somefield).IsOptional();
-            //base.OnModelCreating(modelBuilder);
-        }
     }
 }
