@@ -15,8 +15,8 @@ namespace Bookish.Controllers
         {
             var context = new LibraryContext();
             var DbMembers = context.Members
-                                              .Where(s => s.Name == "Hagrid")
-                                              .Include(s => s.LiveBooks)
+                                              //.Where(s => s.Name == "Hagrid")
+                                              //.Include(s => s.LiveBooks)
                                               .ToList();
             
             //var memberLiveBooks = DbMembers[0].LiveBooks;
@@ -33,6 +33,34 @@ namespace Bookish.Controllers
             }
             
             return View(viewMembers);
+        }
+
+        public IActionResult TestButton()
+        {
+
+            using (var context = new LibraryContext())
+            {
+                var newMember = new MemberDbModel()
+                {
+                    Name = "Test",
+
+                };
+                context.Members.Add(newMember);
+
+                context.SaveChanges();
+            }
+
+            var context2 = new LibraryContext();
+            var DbMembers = context2.Members.ToList();
+            var viewMembers = new List<MemberViewModel>();
+            foreach (var DbMember in DbMembers)
+            {
+                var viewMember = new MemberViewModel(DbMember.Id, DbMember.Name);
+                viewMembers.Add(viewMember);
+            }
+
+            return Index();
+
         }
     }
 }
