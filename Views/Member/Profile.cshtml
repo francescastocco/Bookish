@@ -1,7 +1,7 @@
 ﻿@using System.Linq;
 @using System.Web;
 @using Bookish.DbModels;
-@model MemberDbModel;
+@model MemberViewModel;
 @{
     ViewData["Title"] = "Member";
 
@@ -16,6 +16,7 @@
     <tr>
         <th>LiveBookId</th>
         <th>Title</th>
+        <th>Author</th>
         <th>ISBN</th>
         <th>DateCheckedOut</th>
         <th>Due Date</th>
@@ -24,11 +25,18 @@
     {
         <tr>
             <td>@book.Id</td>
-            <td>@book.BookType.Title</td>
-            <td>@book.BookType.Isbn</td>
+            <td>@book.BookTypeTitle</td>
+            <td>@book.BookTypeAuthor</td>
+            <td>@book.BookTypeIsbn</td>
             <td>@book.CheckOutDate</td>
             <td>@book.DueDate</td>
         </tr>
     }
 
 </table>
+
+<h2>Edit Member</h2>
+<form method="post" asp-controller="Member" asp-action="Profile">
+    First Name: <input type="text" asp-for="Name" value="" />
+    <button type="submit">Change Member Details</button>
+</form>

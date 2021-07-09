@@ -13,7 +13,7 @@ namespace Bookish.Services
     {
         MemberListViewModel GetAllMembers();
         void AddMember(string newMemberName);
-        MemberDbModel GetMember(int id);
+        MemberViewModel GetMember(int id);
     }
 
     public class MemberService : IMemberService
@@ -52,14 +52,14 @@ namespace Bookish.Services
                 Context.SaveChanges();
         }
 
-        public MemberDbModel GetMember(int id)
+        public MemberViewModel GetMember(int id)
         {
             var DbMember = Context.Members
                 .Include(b => b.LiveBooks)
                 .ThenInclude(b => b.BookType)
                 .Single(b => b.Id == id);
 
-            return DbMember;
+            return new MemberViewModel(DbMember);
         }
     }
 }

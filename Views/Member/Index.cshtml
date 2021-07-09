@@ -15,15 +15,13 @@
         <th>ID</th>
         <th>Name</th>
         <th>Link</th>
-        <th>Button</th>
     </tr>
     @foreach (var member in Model.Members)
     {
-        <tr>
+        <tr onclick="location.href='@Url.Action("Profile", "Member", new { id = member.Id })'">
             <td>@member.Id</td>
             <td>@member.Name</td>
-            <td><a href="/Member/@member.Id">Got To Member</a></td>
-            <td onclick="location.href='@Url.Action("Profile", "Member", 1)'">Button</td>
+            <td><a href="/Member/@member.Id">Go To Member</a></td>
         </tr>
     }
      

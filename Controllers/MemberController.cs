@@ -38,5 +38,11 @@ namespace Bookish.Controllers
         {
             return View(_service.GetMember(id));
         }
+
+        [HttpPost]
+        public IActionResult Profile(MemberViewModel memberViewModel)
+        {
+            return RedirectToAction("Profile", new {id = memberViewModel.Id});
+        }
     }
 }
