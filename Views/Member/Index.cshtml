@@ -18,10 +18,10 @@
     </tr>
     @foreach (var member in Model.Members)
     {
-        <tr onclick="location.href='@Url.Action("Profile", "Member", new { id = member.Id })'">
+        <tr>
             <td>@member.Id</td>
             <td>@member.Name</td>
-            <td><a href="/Member/@member.Id">Go To Member</a></td>
+            <td><a asp-controller="Member" asp-action="Profile" asp-route-id="@member.Id">Go To Member</a></td>
         </tr>
     }
      

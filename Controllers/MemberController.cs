@@ -39,10 +39,11 @@ namespace Bookish.Controllers
             return View(_service.GetMember(id));
         }
 
-        [HttpPost]
-        public IActionResult Profile(MemberViewModel memberViewModel)
+        [HttpPost("{id}")]
+        public IActionResult Profile(MemberViewModel memberViewModel, int id)
         {
-            return RedirectToAction("Profile", new {id = memberViewModel.Id});
+            _service.UpdateMember(memberViewModel.Name, id);
+            return RedirectToAction("Profile", new {id = id});
         }
     }
 }

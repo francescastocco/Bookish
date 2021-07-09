@@ -36,7 +36,7 @@
 </table>
 
 <h2>Edit Member</h2>
-<form method="post" asp-controller="Member" asp-action="Profile">
+<form method="post" asp-controller="Member" asp-action="Profile" asp-route-id="@Model.Id">
     First Name: <input type="text" asp-for="Name" value="" />
     <button type="submit">Change Member Details</button>
 </form>

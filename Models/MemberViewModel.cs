@@ -16,6 +16,10 @@ namespace Bookish.Models
             Id = id;
             Name = name;
         }
+        public MemberViewModel()
+        {
+
+        }
 
         public MemberViewModel(MemberDbModel memberDbModel)
         {
