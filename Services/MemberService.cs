@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Bookish.DbModels;
 using Bookish.Models;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace Bookish.Services
 {
@@ -11,6 +13,7 @@ namespace Bookish.Services
     {
         MemberListViewModel GetAllMembers();
         void AddMember(string newMemberName);
+        MemberDbModel GetMember(int id);
     }
 
     public class MemberService : IMemberService
@@ -47,6 +50,16 @@ namespace Bookish.Services
                 };
                 Context.Members.Add(newMember);
                 Context.SaveChanges();
+        }
+
+        public MemberDbModel GetMember(int id)
+        {
+            var DbMember = Context.Members
+                .Include(b => b.LiveBooks)
+                .ThenInclude(b => b.BookType)
+                .Single(b => b.Id == id);
+
+            return DbMember;
         }
     }
 }

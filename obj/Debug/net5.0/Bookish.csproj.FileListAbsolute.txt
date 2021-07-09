@@ -144,3 +144,4 @@ C:\Training\Databases\Bookish\obj\Debug\net5.0\Bookish.pdb
 C:\Training\Databases\Bookish\obj\Debug\net5.0\Bookish.genruntimeconfig.cache
 C:\Training\Databases\Bookish\obj\Debug\net5.0\Bookish.csproj.AssemblyReference.cache
 C:\TechSwitchTraining\Bookish_Fran\Bookish\obj\Debug\net5.0\Bookish.csproj.AssemblyReference.cache
+C:\Training\Databases\Bookish\obj\Debug\net5.0\Razor\Views\Member\Profile.cshtml.g.cs

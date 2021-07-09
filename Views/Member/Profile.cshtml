@@ -1,0 +1,34 @@
+﻿@using System.Linq;
+@using System.Web;
+@using Bookish.DbModels;
+@model MemberDbModel;
+@{
+    ViewData["Title"] = "Member";
+
+}
+
+<h2>Member</h2>
+
+<div>Name: @Model.Name</div>
+<div>Id: @Model.Id</div>
+<div>List of checked-out Books:</div>
+<table style="width:100%">
+    <tr>
+        <th>LiveBookId</th>
+        <th>Title</th>
+        <th>ISBN</th>
+        <th>DateCheckedOut</th>
+        <th>Due Date</th>
+    </tr>
+    @foreach (var book in Model.LiveBooks)
+    {
+        <tr>
+            <td>@book.Id</td>
+            <td>@book.BookType.Title</td>
+            <td>@book.BookType.Isbn</td>
+            <td>@book.CheckOutDate</td>
+            <td>@book.DueDate</td>
+        </tr>
+    }
+
+</table>

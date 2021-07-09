@@ -10,6 +10,7 @@ using Bookish.Services;
 
 namespace Bookish.Controllers
 {
+    [Route("/[controller]")]
     public class MemberController : Controller
     {
         private readonly IMemberService _service;
@@ -30,6 +31,12 @@ namespace Bookish.Controllers
         {
             _service.AddMember(memberListViewModel.NewMemberName);
             return RedirectToAction("Index");
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult Profile(int id)
+        {
+            return View(_service.GetMember(id));
         }
     }
 }

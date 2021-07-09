@@ -1,5 +1,5 @@
 ﻿@using System.Linq;
-@using System.Web; 
+@using System.Web;
 @model MemberListViewModel;
 @{
     ViewData["Title"] = "Member";
@@ -8,21 +8,25 @@
 
 <h2>Members</h2>
 
-<p>List of Hogwarts library members - no access to forbidden section</p>
+<p>List of Hogwarts library members - no access to restricted section</p>
 
 <table style="width:100%">
     <tr>
         <th>ID</th>
         <th>Name</th>
+        <th>Link</th>
+        <th>Button</th>
     </tr>
     @foreach (var member in Model.Members)
     {
         <tr>
             <td>@member.Id</td>
             <td>@member.Name</td>
+            <td><a href="/Member/@member.Id">Got To Member</a></td>
+            <td onclick="location.href='@Url.Action("Profile", "Member", 1)'">Button</td>
         </tr>
     }
-
+     
 </table>
 
 <h2>Create Member</h2>
